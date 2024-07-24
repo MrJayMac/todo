@@ -48,6 +48,39 @@ body{
     background-color: rgb (255,175,163);
 }
 
+.create {
+    border: 1.5px solid rgb(108, 115, 140);
+    color: rgb(108, 115, 148);
+    text-transform: uppercase;
+}
+
+.create:hover{
+    background-color: rgb(131, 138, 172);
+}
+
+.create:active{
+    background-color: rgb(108, 115, 148);
+    color: white;
+}
+
+
+.signout {
+    border: 1.5px solid rgb(255,175,163);
+    background-color: white;
+    color: rgb(255,175,163);
+}
+
+.signout:hover{
+    background-color: rgb(175, 94, 94);
+    border: 1.5px solid rgb(175, 94, 94);
+}
+
+.signout:active{
+    border: 1.5px solid rgb(175, 81, 81);
+    background-color: rgb(175, 81, 81);
+    color: white;
+}
+
 /* List Header */
 
 .list-header{
