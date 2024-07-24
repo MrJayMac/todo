@@ -1,8 +1,22 @@
 import React from 'react'
+import TickIcon from './TickIcon'
+import ProgressBar from './ProgressBar'
 
-function ListItem() {
+function ListItem({task}) {
   return (
-    <div>ListItem</div>
+    <li className='list-item'>
+      <div className='info-container'>
+        <TickIcon/>
+        <p>{task.title}</p>
+        <ProgressBar/>
+      </div>
+
+      <div className='button-container'>
+        <button className='edit'>EDIT</button>
+        <button className='delete'>DELETE</button>
+      </div>
+
+    </li>
   )
 }
 
