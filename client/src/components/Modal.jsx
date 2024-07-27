@@ -1,11 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 function Modal(){
 
-  const mode = 'edit'
+  const mode = 'create'
 
-  const handleChange = () =>{
-    console.log('changing')
+  const editMode = mode === 'edit'?true : false
+
+  const [data, setData] = useState({
+    user_email: "",
+    title: "",
+    progress: "",
+    date: editMode ? "": new Date(),
+  });
+
+
+  const handleChange = (e) =>{
+    const { name, value } = e.target
+
+    setData(data => ({
+      ...data, [name] : value
+    }))
   }
 
   return (
@@ -17,10 +31,10 @@ function Modal(){
         </div>
 
         <form>
-          <input required maxLength={30} placeholder='Your task goes here' name='title' value={""} onChange={handleChange}/>
+          <input required maxLength={30} placeholder='Your task goes here' name='title' value={data.title} onChange={handleChange}/>
           <br/>
           <label for="range">Drag to select your current progress</label>
-          <input required type='range' id='range' min={0} max={100} name='progress' value={""} onClick={handleChange}/>
+          <input required type='range' id='range' min="0" max="100" name='progress' value={data.progress} onClick={handleChange}/>
 
           <input className={mode} type='submit'/>
         </form>
