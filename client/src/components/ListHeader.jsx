@@ -17,7 +17,7 @@ const ListHeader = ({listName}) => {
         <button className='create'>CREATE</button>
         <button className='signout' onClick={signOut}>SIGN OUT</button>
       </div>
-      <Modal/>
+      <Modal mode={'create'}/>
     </div>
   )
 }
