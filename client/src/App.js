@@ -31,8 +31,8 @@ function App() {
 
   return (
     <div className="App">
-      <ListHeader listName={"Todo List"}/>
-      {sortedTask?.map((task) => <ListItem key={task.id} task = {task}/>)}
+      <ListHeader listName={"Todo List"} getData={getData}/>
+      {sortedTask?.map((task) => <ListItem key={task.id} task = {task} getData={getData}/>)}
     </div>
   );
 }
