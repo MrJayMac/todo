@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import ListHeader from './components/ListHeader';
 import ListItem from './components/ListItem'
+import Auth from './components/Auth';
+import { useCookies } from 'react-cookie';
 
 function App() {
+  const [cookies, setCookies, removeCookies] = useCookies(null)
+  const userEmail = cookies.Email
+  const authToken = cookies.AuthToken
+
   const [task, setTask] = useState(null)
 
-
   const getData = async () => {
-
-    const userEmail = 'joshua@test.com'
 
     try {
       const response = await fetch(`${process.env.REACT_APP_SERVERURL}/todos/${userEmail}`);
@@ -20,8 +23,10 @@ function App() {
   }
 
   useEffect(() => {
-    getData();
-  }, []);
+    if(authToken){
+      getData();
+    }}
+  , []);
 
   console.log(task)
 
@@ -31,8 +36,13 @@ function App() {
 
   return (
     <div className="App">
-      <ListHeader listName={"Todo List"} getData={getData}/>
-      {sortedTask?.map((task) => <ListItem key={task.id} task = {task} getData={getData}/>)}
+      {!authToken && <Auth/>}
+      {authToken &&
+        <>
+        <ListHeader listName={"Todo List"} getData={getData}/>
+        <p>Welcome back {userEmail}</p>
+        {sortedTask?.map((task) => <ListItem key={task.id} task = {task} getData={getData}/>)}
+        </>}
     </div>
   );
 }
