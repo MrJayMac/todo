@@ -32,8 +32,9 @@ const Auth = () => {
     if (data.detail) {
       setError(data.detail)
     } else {
-      setCookie('Email', data.email)
-      setCookie('AuthToken', data.token)
+      setCookie('Email', data.email, { path: '/' })
+      setCookie('AuthToken', data.token, { path: '/' })
+
 
       window.location.reload()
     }
@@ -61,7 +62,11 @@ const Auth = () => {
             placeholder="confirm password"
             onChange={(e) =>setConfirmPassword(e.target.value)}
           />}
-          <input type="submit" className="create" onClick={(e) => handleSubmit(e, isLogIn ? 'login' : 'signup')} />
+          <button className="create" onClick={(e) => handleSubmit(e, isLogIn ? 'login' : 'signup')}>
+            {isLogIn ? 'Login' : 'Sign Up'}
+          </button>
+
+
           {error && <p>{error}</p>}
         </form>
         <div className="auth-options">
