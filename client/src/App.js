@@ -35,7 +35,7 @@ const App = () => {
       {!authToken && <Auth />}
       {authToken &&
         <>
-          <ListHeader listName={'🏝️ Holiday tick list'} getData={getData} />
+          <ListHeader listName={'Todo List'} getData={getData} />
           <p className="user-email">
             {userEmail ? `Welcome back ${userEmail}` : 'Loading...'}
           </p>
